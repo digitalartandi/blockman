@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlockMan – GitHub Pages Demo</title>
+  <link rel="stylesheet" href="assets/css/blockman.css">
+  <style> body{margin:0;background:#0b0b12;font-family:system-ui,sans-serif;} .page{padding:16px} </style>
+</head>
+<body>
+  <div class="page">
+    <h1 style="color:#fff;margin:0 0 12px;">BlockMan – Demo</h1>
+    <div class="blockman-wrap" style="--bm-aspect:16/9;">
+      <div id="blockman-game" class="blockman-canvas-holder" aria-label="BlockMan Spiel"></div>
+      <div class="blockman-hud" aria-live="polite">
+        <div class="bm-score">Score: <span id="bm-score-val">0</span></div>
+        <div class="bm-level">Level: <span id="bm-level-val">1</span></div>
+        <button class="bm-pause-btn" id="bm-pause-btn" type="button" aria-pressed="false">Pause</button>
+        <button class="bm-sound-btn" id="bm-sound-btn" type="button" aria-pressed="true">🔊</button>
+      </div>
+      <div class="blockman-dpad" id="bm-dpad" aria-hidden="true">
+        <button class="bm-key bm-up"    data-dir="up"    aria-label="Nach oben"></button>
+        <button class="bm-key bm-left"  data-dir="left"  aria-label="Nach links"></button>
+        <button class="bm-key bm-right" data-dir="right" aria-label="Nach rechts"></button>
+        <button class="bm-key bm-down"  data-dir="down"  aria-label="Nach unten"></button>
+      </div>
+      <div class="blockman-start" id="bm-start">
+        <div class="bm-start-inner">
+          <h2>BLOCKMAN</h2>
+          <p>Sammle alle Mosaiksteine!<br>Steuerung: Pfeiltasten &nbsp;|&nbsp; Smartphone: D-Pad</p>
+          <button type="button" id="bm-start-btn">Jetzt starten</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>window.__BLOCKMAN_CFG__ = {
+    containerId: 'blockman-game',
+    assets: {
+      circle: 'assets/img/circle.png',
+      square: 'assets/img/square.png',
+      hex: 'assets/img/hexagon.png',
+      star: 'assets/img/star.png',
+      player: 'assets/img/block-man.jpg'
+    },
+    version: 'demo'
+  };</script>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <script src="assets/js/blockman.bundle.js"></script>
+</body>
+</html>

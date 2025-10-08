@@ -1,0 +1,68 @@
+.blockman-wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  aspect-ratio: var(--bm-aspect, 16/9);
+  background: radial-gradient(80% 120% at 20% 50%, #3f14ff 0%, #2d0dbd 40%, #120b1e 100%);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.blockman-canvas-holder, .blockman-canvas-holder canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* HUD */
+.blockman-hud {
+  position: absolute; inset: 0 auto auto 0;
+  display: flex; gap: 12px; align-items: center;
+  padding: 10px 14px;
+  color: #fff; font: 600 14px/1.2 system-ui, sans-serif;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+.blockman-hud .bm-score, .blockman-hud .bm-level { background: rgba(0,0,0,.35); padding: 6px 10px; border-radius: 10px; }
+.bm-pause-btn, .bm-sound-btn {
+  margin-left: auto; margin-right: 6px;
+  background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.25);
+  padding: 6px 10px; border-radius: 10px; cursor: pointer; backdrop-filter: blur(4px);
+}
+.bm-pause-btn[aria-pressed="true"], .bm-sound-btn[aria-pressed="false"] { background: rgba(255,0,128,.25); }
+
+.blockman-start {
+  position: absolute; inset: 0; display: grid; place-items: center; background: rgba(8,8,12,.7);
+}
+.blockman-start .bm-start-inner {
+  color: #fff; text-align: center; max-width: 520px; padding: 24px 28px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(66,26,255,.35), rgba(255,0,200,.25));
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.blockman-start h2 { font-size: 42px; letter-spacing: .06em; margin: 0 0 8px; }
+.blockman-start p { opacity: .9; margin: 0 0 16px; }
+#bm-start-btn {
+  padding: 10px 18px; font-weight: 700; border-radius: 12px; border: none; cursor: pointer;
+  background: linear-gradient(90deg, #7a2cff, #ff21c6); color: white;
+}
+
+/* D-Pad (nur auf Touch/kleinen Screens einblenden) */
+.blockman-dpad {
+  position: absolute; bottom: 10px; left: 10px; width: 160px; height: 160px;
+  pointer-events: none; opacity: .95; display: none;
+}
+.blockman-dpad .bm-key {
+  position: absolute; width: 56px; height: 56px; border-radius: 12px; border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12); backdrop-filter: blur(6px); pointer-events: auto; touch-action: none;
+}
+.blockman-dpad .bm-up    { top: 0;    left: 52px; }
+.blockman-dpad .bm-down  { bottom: 0; left: 52px; }
+.blockman-dpad .bm-left  { left: 0;   top: 52px; }
+.blockman-dpad .bm-right { right: 0;  top: 52px; }
+.blockman-dpad .bm-key:active { background: rgba(255,0,200,.35); }
+
+/* Kleine Screens: D-Pad sichtbar */
+@media (max-width: 900px) {
+  .blockman-dpad { display: block; }
+}
+
+/* Besseres Scroll-Verhalten bei Touch */
+.blockman-wrap, .blockman-canvas-holder { touch-action: none; }
